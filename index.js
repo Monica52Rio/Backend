@@ -1,12 +1,13 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
+const cors = require ('cors');
 
 const routesClientes = require("./routes/cliente")
+const routerEvents = require("./routes/event")
 const conn =require("./configdb/db")
 
 const app = express();
-const puerto = 3000 || process.env.PORT;
+const port = 3000 || process.env.PORT;
 
 //llamar a la funcion conectarBD
 conn();
@@ -16,6 +17,7 @@ app.use(express.json())
 
 //Ruta desde el proyecto
 app.use('/api/clientes', routesClientes)
+app.use('/api/eventos', routerEvents)
 
 //Ruta desde la web
 
@@ -24,17 +26,9 @@ app.get('/', (req, res) => {
 })
 
 app
-  .listen(puerto, () => {
-    console.log(`Server running on port ${port}`);
+  .listen(port, () => {
+    console.log(`Server running on port http://localhost:${port}`);
   })
   .on("error", (error) => {
     console.log(`Error: ${error.message}`);
   });
-
-
-
-
-
-
-
-

@@ -12,41 +12,35 @@ const esquemaCliente = new mongoos.Schema({
         required: true, 
     },
 
-    email: {
+    documento: {
+        type: Number,
+        require: true,
+    },
+
+    correo: {
         type: String,
         required: true,
         unique: true,
     },
     
-    tlefono: {
-        type: Number,
-        required: true,
-    },
+        telefono: {
+          type: Number,
+          required: true,
+        },
+    
+        direccion: {
+          type: String,
+          required: true,
+        },
+    
+        ciudad: {
+          type: String,
+          required: true,
+        },
+    
+        pais: {
+          type: String,
+          required: true,
+        }},{versionKey:false, timestamps:true})
 
-    direcciom: {
-        type: String,
-        required: true,
-    },
-
-    ciudad: {
-        type: String,
-        required: true,
-    },
-
-    pais: {
-        type: String,
-        required: true,
-    },
-
-    createdAt: {
-        type: Date,
-        required: true,
-    },
-
-    updatedAt: {
-        type: Date,
-        required: true,
-    },
- })
-
- module.exports = mongoos.model("cliente", esquemaCliente);
+ module.exports = mongoos.model("clientes", esquemaCliente);
